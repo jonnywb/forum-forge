@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
+
 const Nav = () => {
   return (
     <>
-      <a href="/">Articles</a>
+      <Link to="/">Articles</Link>
     </>
   );
 };

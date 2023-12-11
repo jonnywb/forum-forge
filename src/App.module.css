@@ -2,11 +2,16 @@
   font-family: "Urbanist", sans-serif;
   padding: 0;
   margin: 0 auto;
-  padding: 0;
-  text-align: center;
   box-sizing: border-box;
 }
 
+body {
+  min-height: 100vh;
+  background: #0c243e;
+}
+
 main {
+  background-color: #f1e6d9;
   max-width: 1200px;
+  width: 95%;
 }

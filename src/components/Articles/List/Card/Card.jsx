@@ -7,7 +7,7 @@ const Card = ({ article }) => {
   return (
     <li className={item}>
       <div className={votes}>
-        <p>⇧</p>
+        <p>⬆︎</p>
         <p>{article.votes}</p>
         <p>⇩</p>
       </div>
