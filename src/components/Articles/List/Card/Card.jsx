@@ -12,14 +12,16 @@ const Card = ({ article }) => {
         <p>⇩</p>
       </div>
       <div className={title}>
-        <h4>{article.title}</h4>
-        <h5>{article.topic}</h5>
+        <h3>{article.title}</h3>
+        <h4>{article.topic}</h4>
       </div>
 
       <p className={author}>Author: {article.author}</p>
       <div className={dateTime}>
         <p>Created on {date}</p>
-        <p>at {time}</p>
+        <p>
+          at <time>{time}</time>
+        </p>
       </div>
 
       <div className={imgDiv}>
