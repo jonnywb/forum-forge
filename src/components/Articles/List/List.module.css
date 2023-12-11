@@ -1,0 +1,10 @@
+.sectionHead {
+  background-color: #f3f3f3;
+  padding: 1rem;
+}
+
+.list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
