@@ -25,7 +25,7 @@ const List = () => {
       <ul className={list.list}>
         <p>{isLoading ? "Loading..." : "Click the image to view article"}</p>
         {articles.map((article) => {
-          return <Card key={article.article_id} article={article} />;
+          return <Card key={article.article_id} article={article} setArticles={setArticles} />;
         })}
       </ul>
       <Page />
