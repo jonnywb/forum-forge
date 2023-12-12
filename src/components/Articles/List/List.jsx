@@ -7,27 +7,29 @@ import list from "./List.module.css";
 
 const List = () => {
   const [articles, setArticles] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getArticles().then((newArticles) => {
       setArticles(newArticles);
+      setIsLoading(false);
     });
   }, []);
 
   return (
-    <section>
+    <>
       <div className={list.sectionHead}>
         <h2>Articles</h2>
       </div>
       <Filters />
       <ul className={list.list}>
-        <p>Click the image to view article</p>
+        <p>{isLoading ? "Loading..." : "Click the image to view article"}</p>
         {articles.map((article) => {
           return <Card key={article.article_id} article={article} />;
         })}
       </ul>
       <Page />
-    </section>
+    </>
   );
 };
 

@@ -8,7 +8,6 @@
   border-bottom: 0.1em solid #c1c1c1;
   border-left: 0.5em solid #f9f8f8;
   border-right: 0.5em solid #f9f8f8;
-  transition: 0.5s;
 }
 
 .item:nth-child(even) {
@@ -38,9 +37,11 @@
 }
 
 .title {
+  width: 100%;
   grid-area: 1 / 3 / 2 / 5;
-  width: 95%;
+  height: 6.5vh;
   overflow: hidden;
+  padding-left: 1em;
 }
 
 .topic {

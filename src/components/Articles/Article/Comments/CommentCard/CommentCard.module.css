@@ -1,0 +1,48 @@
+.item {
+  width: 100%;
+  height: 8vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.votes {
+  width: 3em;
+  grid-area: 1/1/4/2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.votes p:first-child {
+  color: #f1996e;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.item:nth-child(even) {
+  background-color: #ebeff3;
+}
+
+.author {
+  height: 3em;
+  font-size: 1em;
+  font-weight: 500;
+  width: 100%;
+  padding-left: 4em;
+  background-color: #f1996e;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.body {
+  width: 100%;
+  padding: 0.3em;
+  padding-left: 1em;
+}
