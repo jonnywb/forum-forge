@@ -28,7 +28,7 @@ const Comments = ({ article_id }) => {
   } else {
     return (
       <section>
-        <h3 className={heading}>No Comments to display</h3>
+        <h3 className={heading}>{isLoading ? "Loading..." : "No Comments to display"}</h3>
       </section>
     );
   }
