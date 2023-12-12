@@ -47,7 +47,7 @@ const Article = () => {
             </div>
             <div className={styles.title}>
               <h2>{title}</h2>
-              <p>{topic}</p>
+              <p>{topic.charAt(0).toUpperCase() + topic.slice(1)}</p>
             </div>
 
             <p className={styles.author}>Author: {author}</p>

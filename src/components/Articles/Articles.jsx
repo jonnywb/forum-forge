@@ -1,4 +1,5 @@
 import List from "./List/List";
+import Card from "./List/Card/Card";
 import Article from "./Article/Article";
 
 import { Routes, Route } from "react-router-dom";
