@@ -4,6 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import { getArticleById } from "../../../api";
 
 import Comments from "./Comments/Comments";
+import Vote from "../Vote/Vote";
 import styles from "./Article.module.css";
 
 const Article = () => {
@@ -42,9 +43,7 @@ const Article = () => {
           </nav>
           <header className={styles.sectionHead}>
             <div className={styles.votes}>
-              <p>⬆︎</p>
-              <p>{votes}</p>
-              <p>⇩</p>
+              <Vote article_id={article_id} setArticle={setArticle} votes={votes} />
             </div>
             <div className={styles.title}>
               <h2>{title}</h2>
