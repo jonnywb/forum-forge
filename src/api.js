@@ -9,3 +9,9 @@ export async function getArticles() {
 
   return data.articles;
 }
+
+export async function getArticleById(article_id) {
+  const { data } = await newsApi.get(`/articles/${article_id}`);
+
+  return data.article;
+}
