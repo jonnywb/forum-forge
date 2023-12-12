@@ -1,6 +1,7 @@
 import { item, imgDiv, title, author, topic, count, votes, dateTime } from "./Card.module.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { voteArticle } from "../../../../api";
 
 const Card = ({ article, setArticles }) => {
   const date = new Date(article.created_at);
@@ -8,7 +9,32 @@ const Card = ({ article, setArticles }) => {
 
   const [voteValue, setVoteValue] = useState(0);
 
-  
+  const handleVote = (vote) => {
+    voteArticle(article.article_id, vote);
+
+    setArticles((currArticles) => {
+      const updatedArticles = currArticles.map((item) => {
+        const votes = item.votes + vote;
+        if (item.article_id === article.article_id) {
+          return { ...item, votes };
+        }
+        return item;
+      });
+      return updatedArticles;
+    });
+
+    setVoteValue((current) => {
+      return (current += vote);
+    });
+  };
+
+  const handleUpVote = () => {
+    handleVote(1);
+  };
+
+  const handleDownVote = () => {
+    handleVote(-1);
+  };
 
   return (
     <li className={item}>
