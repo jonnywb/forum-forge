@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { getArticleById } from "../../../api";
 
 import styles from "./Article.module.css";
@@ -8,17 +8,26 @@ import styles from "./Article.module.css";
 const Article = () => {
   const { article_id } = useParams();
   const [article, setArticle] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getArticleById(article_id).then((newArticle) => {
       setArticle(newArticle);
+      setIsLoading(false);
     });
   }, []);
+
+  if (isLoading) {
+    return <p className={styles.msg}>Loading...</p>;
+  }
 
   if (article) {
     const { title, topic, author, body, created_at, votes, article_img_url, comment_count } = article;
     return (
       <article className={styles.article}>
+        <nav className={styles.articleNav}>
+          <Link to="/articles">⬅︎</Link>
+        </nav>
         <header className={styles.sectionHead}>
           <div className={styles.votes}>
             <p>⬆︎</p>

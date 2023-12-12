@@ -1,5 +1,12 @@
 .filters {
-  background: #f1e5d8;
+  background: #face85;
   padding: 1rem;
-  border-left: 0.5rem solid grey;
+}
+
+.filters button {
+  background-color: #ff8c6b;
+  border: none;
+  padding: 1em;
+  border-radius: 1em;
+  box-shadow: 0em 0.1em 0.5em rgba(0, 0, 0, 0.2);
 }

@@ -1,0 +1,16 @@
+nav {
+  margin-right: 0;
+}
+
+nav a {
+  font-size: 1.1em;
+  text-decoration: none;
+  color: #f1996e;
+  padding-right: 3rem;
+  margin-right: 1em;
+  transition: 0.7s;
+}
+
+nav a:hover {
+  border-bottom: 0.5em solid #f1996e;
+}
