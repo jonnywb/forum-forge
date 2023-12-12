@@ -21,3 +21,9 @@ export async function getComments(article_id) {
 
   return data.comments;
 }
+
+export async function voteArticle(article_id, inc_votes) {
+  const { data } = await newsApi.patch(`/articles/${article_id}`, { inc_votes });
+
+  return data.article;
+}

@@ -3,7 +3,6 @@ import app from "./App.module.css";
 import Header from "./components/Header/Header";
 import Nav from "./components/Nav/Nav";
 import Articles from "./components/Articles/Articles";
-import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
@@ -13,9 +12,7 @@ function App() {
         <Nav />
       </header>
       <main>
-        <Routes>
-          <Route path="*" element={<Articles />} />
-        </Routes>
+        <Articles />
       </main>
     </>
   );

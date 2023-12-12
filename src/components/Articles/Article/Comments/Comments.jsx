@@ -14,17 +14,24 @@ const Comments = ({ article_id }) => {
       setIsLoading(false);
     });
   }, []);
-
-  return (
-    <section>
-      <h3 className={heading}>{isLoading ? "Loading..." : "Comments"}</h3>
-      <ul className={list}>
-        {comments.map((comment) => {
-          return <CommentCard key={comment.comment_id} comment={comment} />;
-        })}
-      </ul>
-    </section>
-  );
+  if (comments.length) {
+    return (
+      <section>
+        <h3 className={heading}>{isLoading ? "Loading..." : "Comments"}</h3>
+        <ul className={list}>
+          {comments.map((comment) => {
+            return <CommentCard key={comment.comment_id} comment={comment} />;
+          })}
+        </ul>
+      </section>
+    );
+  } else {
+    return (
+      <section>
+        <h3 className={heading}>No Comments to display</h3>
+      </section>
+    );
+  }
 };
 
 export default Comments;
