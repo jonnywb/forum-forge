@@ -5,17 +5,23 @@
   grid-template-rows: 1.75fr 0.25fr;
   width: 100%;
   height: 10vh;
-  border-bottom: 1px solid #c1c1c1;
+  border-bottom: 0.1em solid #c1c1c1;
   border-left: 0.5em solid #f9f8f8;
+  border-right: 0.5em solid #f9f8f8;
+  transition: 0.5s;
 }
 
 .item:nth-child(even) {
   background-color: #e0e6eb;
   border-left: 0.5em solid #e0e6eb;
+  border-right: 0.5em solid #e0e6eb;
 }
 
 .item:hover {
+  border-right: 0.5em solid #ff8c6b;
   border-left: 0.5em solid #ff8c6b;
+  border-bottom: 0.1em solid #ff8c6b;
+  background-color: #face85;
 }
 
 .votes {
@@ -34,7 +40,7 @@
 .title {
   grid-area: 1 / 3 / 2 / 5;
   width: 95%;
-  overflow: scroll;
+  overflow: hidden;
 }
 
 .topic {
@@ -72,4 +78,21 @@
 .dateTime {
   grid-area: 2 / 5 / 3 / 6;
   width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+  .topic,
+  .dateTime,
+  .author {
+    display: none;
+  }
+
+  .title {
+    grid-area: 1 / 3 / 2 / 6;
+    font-size: 1em;
+  }
+
+  .count {
+    grid-area: 2 / 3 / 3 / 6;
+  }
 }

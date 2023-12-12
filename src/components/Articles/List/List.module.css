@@ -1,6 +1,6 @@
 .sectionHead {
   background: #f1996e;
-  padding: 2em;
+  padding: 1em;
   text-align: center;
 }
 
@@ -11,6 +11,7 @@
 }
 
 .list > p {
+  font-weight: 600;
   width: 100%;
   text-align: center;
   padding: 0.5rem;

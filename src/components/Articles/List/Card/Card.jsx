@@ -9,12 +9,7 @@ const Card = ({ article }) => {
   const goToArticle = useNavigate();
 
   return (
-    <li
-      className={item}
-      onClick={() => {
-        goToArticle(`/articles/${article.article_id}`);
-      }}
-    >
+    <li className={item}>
       <div className={votes}>
         <p>⬆︎</p>
         <p>{article.votes}</p>
@@ -25,7 +20,12 @@ const Card = ({ article }) => {
 
       <h4 className={topic}>{article.topic}</h4>
 
-      <div className={imgDiv}>
+      <div
+        className={imgDiv}
+        onClick={() => {
+          goToArticle(`/articles/${article.article_id}`);
+        }}
+      >
         <img src={article.article_img_url} alt={article.title} />
       </div>
 

@@ -12,6 +12,7 @@ body {
 }
 
 header {
+  max-width: 1400px;
   display: flex;
   padding: 0.5em;
   width: 95%;
@@ -22,4 +23,14 @@ main {
   background-color: #f9f8f8;
   max-width: 1400px;
   width: 95%;
+}
+
+@media screen and (max-width: 800px) {
+  header {
+    display: block;
+  }
+
+  main {
+    width: 100%;
+  }
 }

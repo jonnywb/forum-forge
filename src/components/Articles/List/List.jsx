@@ -21,7 +21,7 @@ const List = () => {
       </div>
       <Filters />
       <ul className={list.list}>
-        <p>Click to view an article</p>
+        <p>Click the image to view article</p>
         {articles.map((article) => {
           return <Card key={article.article_id} article={article} />;
         })}

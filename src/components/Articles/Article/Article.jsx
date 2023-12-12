@@ -26,7 +26,9 @@ const Article = () => {
     return (
       <article className={styles.article}>
         <nav className={styles.articleNav}>
-          <Link to="/articles">⬅︎</Link>
+          <Link to="/articles">
+            <span>⬅︎</span> Back
+          </Link>
         </nav>
         <header className={styles.sectionHead}>
           <div className={styles.votes}>
