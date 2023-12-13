@@ -27,3 +27,9 @@ export async function voteArticle(article_id, inc_votes) {
 
   return data.article;
 }
+
+export async function postComment(article_id, username, body) {
+  const { data } = await newsApi.post(`/articles/${article_id}/comments`, { username, body });
+
+  return data.comment;
+}

@@ -66,11 +66,11 @@ const Article = () => {
               </p>
             </div>
             <button className={styles.count} onClick={handleShowComments}>
-              Show {comment_count} comments
+              {showComments ? "Hide" : "Show"} {comment_count} comments
             </button>
           </footer>
         </article>
-        {showComments && <Comments article_id={article_id} />}
+        {<Comments article_id={article_id} show={showComments} />}
       </>
     );
   }
