@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { getComments } from "../../../../api";
 import CommentCard from "./CommentCard/CommentCard";
+import PostComment from "./PostComment/PostComment";
 
 import { list, heading } from "./Comments.module.css";
 
-const Comments = ({ article_id }) => {
+const Comments = ({ article_id, show }) => {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -13,19 +14,25 @@ const Comments = ({ article_id }) => {
       setComments(newComments);
       setIsLoading(false);
     });
-  }, []);
-  if (comments.length) {
+  }, [article_id]);
+
+  if (show && comments.length) {
     return (
       <section>
-        <h3 className={heading}>{isLoading ? "Loading..." : "Comments"}</h3>
-        <ul className={list}>
-          {comments.map((comment) => {
-            return <CommentCard key={comment.comment_id} comment={comment} />;
-          })}
-        </ul>
+        <PostComment article_id={article_id} setComments={setComments} comments={comments} />
+
+        {isLoading ? (
+          <h3 className={heading}>"Loading..."</h3>
+        ) : (
+          <ul className={list}>
+            {comments.map((comment) => {
+              return <CommentCard key={comment.comment_id} comment={comment} />;
+            })}
+          </ul>
+        )}
       </section>
     );
-  } else {
+  } else if (show) {
     return (
       <section>
         <h3 className={heading}>{isLoading ? "Loading..." : "No Comments to display"}</h3>

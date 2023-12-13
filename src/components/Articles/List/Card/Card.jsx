@@ -1,17 +1,14 @@
 import styles from "./Card.module.css";
 import { Link } from "react-router-dom";
-import Vote from "../../Vote/Vote";
 
-const Card = ({ article }) => {
+const Card = ({ children, article }) => {
   const { article_id, votes, title, topic, article_img_url, author, comment_count, created_at } = article;
 
   const date = new Date(created_at);
 
   return (
     <li className={styles.item}>
-      <div className={styles.votes}>
-        <Vote article_id={article_id} votes={votes} />
-      </div>
+      <div className={styles.votes}>{children}</div>
 
       <h3 className={styles.title}>{title}</h3>
 

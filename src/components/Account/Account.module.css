@@ -1,0 +1,36 @@
+.account {
+  margin: 5vh auto;
+  padding: 2em;
+  width: 380px;
+  background-color: #f9f8f8;
+  text-align: center;
+  box-shadow: 0.2em 1em 5em rgba(0, 0, 0, 0.2);
+}
+
+.account h2 {
+  margin-bottom: 1em;
+}
+
+.avatar {
+  border-radius: 50%;
+  border: 0.2em solid #0c233e;
+  width: 10vh;
+  margin-bottom: 1em;
+}
+
+.logOut {
+  margin-top: 2em;
+  padding: 1em 2em;
+  border-radius: 1em;
+  border: none;
+  background-color: #f1996e;
+}
+
+.logOut:disabled {
+  background-color: grey;
+}
+
+.terms {
+  margin-top: 2em;
+  color: grey;
+}

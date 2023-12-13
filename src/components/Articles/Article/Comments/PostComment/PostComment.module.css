@@ -1,0 +1,31 @@
+.commentForm {
+  background-color: #f1996e;
+  height: 10vh;
+  padding: 0.5em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-top: 0.1em solid #0c233e;
+  border-bottom: 0.1em solid #0c233e;
+}
+
+.label {
+  text-align: center;
+}
+
+.textarea {
+  height: 100%;
+  font-size: 1em;
+  display: block;
+  width: 100%;
+  resize: none;
+  margin: 0 1em;
+  padding: 0.2em;
+}
+
+.submit {
+  padding: 1em 2em;
+  background-color: #face85;
+  border: none;
+  box-shadow: 0.1em 0.1em 0.3em rgba(0, 0, 0, 0.2);
+}

@@ -1,12 +1,12 @@
 import List from "./List/List";
-import Card from "./List/Card/Card";
 import Article from "./Article/Article";
+import { article } from "./Articles.module.css";
 
 import { Routes, Route } from "react-router-dom";
 
 const Articles = () => {
   return (
-    <section id="articles">
+    <section className={article}>
       <Routes>
         <Route path="/" element={<List />} />
         <Route path="/articles" element={<List />} />
