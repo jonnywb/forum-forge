@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { voteArticle } from "../../../api";
 import styles from "./Vote.module.css";
-import useArticlesState from "../utils/useArticlesState";
 
-const Vote = ({ article_id, setArticle, votes }) => {
+const Vote = ({ article_id, setArticle, setArticles, votes }) => {
   const [voteValue, setVoteValue] = useState(0);
-  const { setArticles } = useArticlesState();
 
   const handleVote = (vote) => {
     voteArticle(article_id, vote).catch((err) => {
