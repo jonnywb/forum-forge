@@ -12,6 +12,8 @@ import { useParams } from "react-router-dom";
 const List = () => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [sort, setSort] = useState();
+  const [order, setOrder] = useState();
   const { topic } = useParams();
 
   useEffect(() => {
@@ -31,8 +33,8 @@ const List = () => {
       <div className={list.sectionHead}>
         <h2>Articles</h2>
       </div>
-      <Topics />
-      <Filters />
+      <Topics currTopic={topic} />
+      <Filters setSort={setSort} setOrder={setOrder} />
       <ul className={list.list}>
         <p>Click the image to view article</p>
         {articles.map((article) => {

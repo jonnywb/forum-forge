@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { getTopics } from "../../../api";
-import { topics as list, topic as item } from "./Topics.module.css";
+import { topics as list, topic as item, active } from "./Topics.module.css";
 import { Link } from "react-router-dom";
 
-const Topics = () => {
+const Topics = ({ currTopic }) => {
   const [topics, setTopics] = useState([]);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const Topics = () => {
     <nav className={list}>
       {topics.map((topic) => {
         return (
-          <Link className={item} key={topic.slug} to={`/topics/${topic.slug}`}>
+          <Link className={currTopic === topic.slug ? active : item} key={topic.slug} to={`/topics/${topic.slug}`}>
             {topic.slug}
           </Link>
         );

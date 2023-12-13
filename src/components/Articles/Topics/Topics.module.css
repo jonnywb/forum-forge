@@ -1,17 +1,43 @@
 .topics {
   background-color: #0c243e;
-  padding: 0.2em 1em;
+  padding: 0.2em 0;
   display: flex;
   justify-content: space-around;
 }
 
 .topic {
-  width: auto;
-  padding: 0;
+  padding: 0 1em;
   margin: 0;
+  width: 100%;
+  text-align: center;
+  color: #face86;
+  text-decoration: none;
+}
+
+.topic:first-child {
+  border-left: none;
 }
 
 .topic:hover {
+  transition: 0.7s;
   border: none;
-  color: #f9f8f8;
+  color: #0c243e;
+  background: #f1996e;
+  background: -webkit-linear-gradient(135deg, #0c243e 2%, #a86288 17%, #ff8c6b 50%, #a86288 83%, #0c243e 98%);
+}
+
+.active {
+  padding: 0 1em;
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  border: none;
+  color: #0c243e;
+  background: #f1996e;
+  background: -webkit-linear-gradient(135deg, #0c243e 2%, #a86288 17%, #ff8c6b 50%, #a86288 83%, #0c243e 98%);
+  text-decoration: none;
+}
+
+.active:hover {
+  border: none;
 }

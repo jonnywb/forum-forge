@@ -1,5 +1,6 @@
 .sectionHead {
   background: #f1996e;
+  background: -webkit-linear-gradient(135deg, #0c243e 2%, #a86288 17%, #ff8c6b 50%, #a86288 83%, #0c243e 98%);
   padding: 0.2em;
   text-align: center;
 }
@@ -11,8 +12,9 @@
 }
 
 .list > p {
-  font-weight: 600;
   width: 100%;
   text-align: center;
   padding: 0.5rem;
+  background-color: #08182a;
+  color: #dedede;
 }

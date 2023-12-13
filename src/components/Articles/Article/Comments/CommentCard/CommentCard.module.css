@@ -3,7 +3,6 @@
   min-height: 7vh;
   display: flex;
   flex-direction: column;
-  border-bottom: 0.1em solid #0c233e;
 }
 
 .votes {
@@ -28,25 +27,33 @@
 }
 
 .item:nth-child(even) {
-  background-color: #ebeff3;
+  background-color: #08182a;
 }
 
 .author {
   height: 1.5em;
   font-size: 1em;
   font-weight: 500;
-  width: 100%;
+  width: 15%;
+  margin-left: 0;
   padding-left: 4em;
   background-color: #f1996e;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  color: black;
+  background: -webkit-linear-gradient(135deg, #0c243e 14%, #ff8c6b 16%, #a86288 80%, #0c243e 90%);
+}
+
+.item:nth-child(even) .author {
+  background: -webkit-linear-gradient(135deg, #08182a 14%, #ff8c6b 16%, #a86288 80%, #0c243e 90%);
 }
 
 .body {
   width: 100%;
   padding: 0.3em;
   padding-left: 1em;
+  color: #e2e2e2;
 }
 
 .del {
