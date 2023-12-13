@@ -4,27 +4,38 @@ import { deleteComment } from "../../../../../api";
 import { useContext } from "react";
 import { UserContext } from "../../../../Context/UserProvider";
 
-const CommentCard = ({ comment, setComments, setCommentCount, setShowComments }) => {
+const CommentCard = ({ comments, comment, setComments, setCommentCount, setShowComments }) => {
   const { user } = useContext(UserContext);
 
   const handleClick = async () => {
-    setComments((currComments) => {
-      const filteredComments = currComments.filter((item) => item.comment_id !== comment.comment_id);
+    const backup = { ...comment };
+    try {
+      setComments((currComments) => {
+        const filteredComments = currComments.filter((item) => {
+          return item.comment_id !== comment.comment_id;
+        });
 
+        return filteredComments;
+      });
+      if (comments.length === 1) {
+        setShowComments(false);
+      }
       setCommentCount((currCount) => {
-        if (currCount - 1 === 0) {
-          setShowComments(false);
-        }
         return currCount - 1;
       });
 
-      return filteredComments;
-    });
-
-    try {
       await deleteComment(comment.comment_id);
     } catch (err) {
       console.log(err);
+
+      setComments((currComments) => {
+        return [backup, ...currComments];
+      });
+
+      setShowComments(true);
+      setCommentCount((currCount) => {
+        return currCount + 1;
+      });
     }
   };
 

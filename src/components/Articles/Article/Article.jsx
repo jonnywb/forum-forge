@@ -71,8 +71,8 @@ const Article = () => {
               </p>
             </div>
             <button className={styles.count} onClick={handleShowComments} disabled={commentCount === 0}>
-              {showComments && commentCount > 0 ? "Hide" : null}
-              {!showComments && commentCount > 0 ? "Show" : null} {commentCount} comments
+              {(showComments && commentCount > 0 && "Hide ") || (!showComments && commentCount > 0 && "Show ")}
+              {commentCount} comments
             </button>
           </footer>
         </article>
@@ -87,10 +87,12 @@ const Article = () => {
                 comments={comments}
                 setComments={setComments}
                 setCommentCount={setCommentCount}
+                setShowComments={setShowComments}
               />
               <CommentCard
                 key={com_id}
                 comment={com}
+                comments={comments} 
                 setComments={setComments}
                 setCommentCount={setCommentCount}
                 setShowComments={setShowComments}
