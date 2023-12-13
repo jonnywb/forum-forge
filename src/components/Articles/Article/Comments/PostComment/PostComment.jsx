@@ -18,6 +18,7 @@ const PostComment = ({ article_id, setComments, comments, setCommentCount }) => 
       comment_id: comments.length + 1,
       author: user.username,
       body: input,
+      votes: 0,
     };
 
     setComments([newComment, ...comments]);
