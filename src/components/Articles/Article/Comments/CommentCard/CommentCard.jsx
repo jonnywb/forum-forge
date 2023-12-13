@@ -7,7 +7,7 @@ import { UserContext } from "../../../../Context/UserProvider";
 const CommentCard = ({ comments, comment, setComments, setCommentCount, setShowComments }) => {
   const { user } = useContext(UserContext);
 
-  const handleClick = async () => {
+  const handleDelete = async () => {
     const backup = { ...comment };
     try {
       setComments((currComments) => {
@@ -49,7 +49,7 @@ const CommentCard = ({ comments, comment, setComments, setCommentCount, setShowC
           <p>⇩</p>
         </div>
         <p className={body}>{comment.body}</p>
-        {comment.author === user.username && <DeleteIcon className={del} onClick={handleClick} />}
+        {comment.author === user.username && <DeleteIcon className={del} onClick={handleDelete} />}
       </div>
     </li>
   );

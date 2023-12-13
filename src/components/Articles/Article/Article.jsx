@@ -92,7 +92,7 @@ const Article = () => {
               <CommentCard
                 key={com_id}
                 comment={com}
-                comments={comments} 
+                comments={comments}
                 setComments={setComments}
                 setCommentCount={setCommentCount}
                 setShowComments={setShowComments}
