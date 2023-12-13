@@ -4,8 +4,8 @@ const newsApi = axios.create({
   baseURL: "https://forum-forge.onrender.com/api",
 });
 
-export async function getArticles() {
-  const { data } = await newsApi.get("/articles");
+export async function getArticles(params) {
+  const { data } = await newsApi.get("/articles", { params });
 
   return data.articles;
 }
@@ -38,4 +38,9 @@ export async function deleteComment(comment_id) {
   const { data } = await newsApi.delete(`/comments/${comment_id}`);
 
   return data;
+}
+
+export async function getTopics() {
+  const { data } = await newsApi.get("/topics");
+  return data.topics;
 }

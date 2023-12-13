@@ -1,0 +1,17 @@
+.topics {
+  background-color: #0c243e;
+  padding: 0.2em 1em;
+  display: flex;
+  justify-content: space-around;
+}
+
+.topic {
+  width: auto;
+  padding: 0;
+  margin: 0;
+}
+
+.topic:hover {
+  border: none;
+  color: #f9f8f8;
+}

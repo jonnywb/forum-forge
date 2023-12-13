@@ -11,6 +11,7 @@ const Articles = () => {
         <Route path="/" element={<List />} />
         <Route path="/articles" element={<List />} />
         <Route path="/articles/:article_id" element={<Article />} />
+        <Route path="/topics/:topic" element={<List />} />
       </Routes>
     </section>
   );
