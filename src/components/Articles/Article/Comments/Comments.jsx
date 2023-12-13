@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 import { getComments } from "../../../../api";
-import CommentCard from "./CommentCard/CommentCard";
-import PostComment from "./PostComment/PostComment";
 
 import { list, heading } from "./Comments.module.css";
 
-const Comments = ({ article_id, show }) => {
+const Comments = ({ renderItem, article_id, show }) => {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -15,30 +13,23 @@ const Comments = ({ article_id, show }) => {
       setIsLoading(false);
     });
   }, [article_id]);
-
-  if (show && comments.length) {
-    return (
-      <section>
-        <PostComment article_id={article_id} setComments={setComments} comments={comments} />
-
-        {isLoading ? (
-          <h3 className={heading}>"Loading..."</h3>
-        ) : (
-          <ul className={list}>
-            {comments.map((comment) => {
-              return <CommentCard key={comment.comment_id} comment={comment} setComments={setComments} />;
-            })}
-          </ul>
-        )}
-      </section>
-    );
-  } else if (show) {
-    return (
-      <section>
-        <h3 className={heading}>{isLoading ? "Loading..." : "No Comments to display"}</h3>
-      </section>
-    );
-  }
+  return (
+    <section>
+      {renderItem(comments, setComments).props.children[0]}
+      {show && isLoading && <h3 className={heading}>Loading...</h3>}
+      {show && !isLoading && (
+        <ul className={list}>
+          {comments.length ? (
+            comments.map((comment) => {
+              return renderItem(comments, setComments, comment, comment.comment_id).props.children[1];
+            })
+          ) : (
+            <h3 className={heading}>No Comments</h3>
+          )}
+        </ul>
+      )}
+    </section>
+  );
 };
 
 export default Comments;

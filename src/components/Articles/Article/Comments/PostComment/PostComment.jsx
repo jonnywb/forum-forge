@@ -3,7 +3,7 @@ import { useState, useContext } from "react";
 import { commentForm, label, textarea, submit } from "./PostComment.module.css";
 import { UserContext } from "../../../../Context/UserProvider";
 
-const PostComment = ({ article_id, setComments, comments }) => {
+const PostComment = ({ article_id, setComments, comments, setCommentCount }) => {
   const [input, setInput] = useState("");
   const { user } = useContext(UserContext);
 
@@ -21,6 +21,9 @@ const PostComment = ({ article_id, setComments, comments }) => {
     };
 
     setComments([newComment, ...comments]);
+    setCommentCount((currCount) => {
+      return currCount + 1;
+    });
 
     try {
       await postComment(article_id, user.username, input);

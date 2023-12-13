@@ -3,15 +3,20 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { deleteComment } from "../../../../../api";
 import { useContext } from "react";
 import { UserContext } from "../../../../Context/UserProvider";
-import { redirect } from "react-router-dom";
 
-const CommentCard = ({ comment, setComments }) => {
-  const date = new Date(comment.created_at);
+const CommentCard = ({ comment, setComments, setCommentCount, setShowComments }) => {
   const { user } = useContext(UserContext);
 
   const handleClick = async () => {
     setComments((currComments) => {
       const filteredComments = currComments.filter((item) => item.comment_id !== comment.comment_id);
+
+      setCommentCount((currCount) => {
+        if (currCount - 1 === 0) {
+          setShowComments(false);
+        }
+        return currCount - 1;
+      });
 
       return filteredComments;
     });

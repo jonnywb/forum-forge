@@ -113,3 +113,13 @@
   background-color: #0c243e;
   color: #face85;
 }
+
+.count:disabled {
+  background: #d4d4d4;
+  border: 0.1em solid #0c243e;
+  box-shadow: none;
+}
+
+.count:disabled:hover {
+  color: #0c243e;
+}
