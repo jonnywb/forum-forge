@@ -25,11 +25,8 @@ const PostComment = ({ article_id, setComments, comments }) => {
     try {
       await postComment(article_id, user.username, input);
       setInput("");
-    } catch (error) {
-      console.error(error);
-
-      const updatedComments = await getComments(article_id);
-      setComments(updatedComments);
+    } catch (err) {
+      console.log(err);
     }
   };
 

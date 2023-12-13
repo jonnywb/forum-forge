@@ -5,11 +5,7 @@ import styles from "./Vote.module.css";
 const Vote = ({ article_id, setArticle, setArticles, votes }) => {
   const [voteValue, setVoteValue] = useState(0);
 
-  const handleVote = (vote) => {
-    voteArticle(article_id, vote).catch((err) => {
-      console.log(err);
-    });
-
+  const handleVote = async (vote) => {
     if (!setArticle) {
       setArticles((currArticles) => {
         const updatedArticles = currArticles.map((item) => {
@@ -26,6 +22,12 @@ const Vote = ({ article_id, setArticle, setArticles, votes }) => {
         const newVotes = currArticle.votes + vote;
         return { ...currArticle, votes: newVotes };
       });
+    }
+
+    try {
+      await voteArticle(article_id, vote);
+    } catch (err) {
+      console.log(err);
     }
 
     setVoteValue((current) => {
