@@ -1,24 +1,29 @@
-import { useState, useEffect } from "react";
-
 import { useParams, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { getArticleById } from "../../../api";
+import CommentCard from "./Comments/CommentCard/CommentCard";
 
 import Comments from "./Comments/Comments";
+import PostComment from "./Comments/PostComment/PostComment";
 import Vote from "../Vote/Vote";
 import styles from "./Article.module.css";
 
 const Article = () => {
   const { article_id } = useParams();
+  const [showComments, setShowComments] = useState(false);
   const [article, setArticle] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  const [showComments, setShowComments] = useState(false);
+  const [commentCount, setCommentCount] = useState(0);
 
   useEffect(() => {
+    setIsLoading(true);
+
     getArticleById(article_id).then((newArticle) => {
       setArticle(newArticle);
+      setCommentCount(+newArticle.comment_count);
       setIsLoading(false);
     });
-  }, []);
+  }, [article_id]);
 
   const handleShowComments = () => {
     setShowComments(!showComments);
@@ -65,12 +70,36 @@ const Article = () => {
                 Created on {date.toLocaleDateString()} at {date.toLocaleTimeString()}
               </p>
             </div>
-            <button className={styles.count} onClick={handleShowComments}>
-              {showComments ? "Hide" : "Show"} {comment_count} comments
+            <button className={styles.count} onClick={handleShowComments} disabled={commentCount === 0}>
+              {(showComments && commentCount > 0 && "Hide ") || (!showComments && commentCount > 0 && "Show ")}
+              {commentCount} comments
             </button>
           </footer>
         </article>
-        {<Comments article_id={article_id} show={showComments} />}
+
+        <Comments
+          article_id={article_id}
+          show={showComments}
+          renderItem={(comments, setComments, com, com_id) => (
+            <>
+              <PostComment
+                article_id={article_id}
+                comments={comments}
+                setComments={setComments}
+                setCommentCount={setCommentCount}
+                setShowComments={setShowComments}
+              />
+              <CommentCard
+                key={com_id}
+                comment={com}
+                comments={comments}
+                setComments={setComments}
+                setCommentCount={setCommentCount}
+                setShowComments={setShowComments}
+              />
+            </>
+          )}
+        />
       </>
     );
   }

@@ -6,6 +6,10 @@ const Vote = ({ article_id, setArticle, setArticles, votes }) => {
   const [voteValue, setVoteValue] = useState(0);
 
   const handleVote = async (vote) => {
+    setVoteValue((current) => {
+      return (current += vote);
+    });
+
     if (!setArticle) {
       setArticles((currArticles) => {
         const updatedArticles = currArticles.map((item) => {
@@ -29,10 +33,6 @@ const Vote = ({ article_id, setArticle, setArticles, votes }) => {
     } catch (err) {
       console.log(err);
     }
-
-    setVoteValue((current) => {
-      return (current += vote);
-    });
   };
 
   const handleUpVote = () => {

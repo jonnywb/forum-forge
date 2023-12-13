@@ -33,3 +33,9 @@ export async function postComment(article_id, username, body) {
 
   return data.comment;
 }
+
+export async function deleteComment(comment_id) {
+  const { data } = await newsApi.delete(`/comments/${comment_id}`);
+
+  return data;
+}
