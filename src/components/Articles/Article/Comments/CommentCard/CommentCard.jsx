@@ -1,7 +1,27 @@
-import { item, content, votes, author, body } from "./CommentCard.module.css";
+import { item, content, votes, author, body, del } from "./CommentCard.module.css";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { deleteComment } from "../../../../../api";
+import { useContext } from "react";
+import { UserContext } from "../../../../Context/UserProvider";
+import { redirect } from "react-router-dom";
 
-const CommentCard = ({ comment }) => {
+const CommentCard = ({ comment, setComments }) => {
   const date = new Date(comment.created_at);
+  const { user } = useContext(UserContext);
+
+  const handleClick = async () => {
+    setComments((currComments) => {
+      const filteredComments = currComments.filter((item) => item.comment_id !== comment.comment_id);
+
+      return filteredComments;
+    });
+
+    try {
+      await deleteComment(comment.comment_id);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <li className={item}>
@@ -13,6 +33,7 @@ const CommentCard = ({ comment }) => {
           <p>⇩</p>
         </div>
         <p className={body}>{comment.body}</p>
+        {comment.author === user.username && <DeleteIcon className={del} onClick={handleClick} />}
       </div>
     </li>
   );
