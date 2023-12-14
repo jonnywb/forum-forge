@@ -26,8 +26,6 @@ const CommentCard = ({ comments, comment, setComments, setCommentCount, setShowC
 
       await deleteComment(comment.comment_id);
     } catch (err) {
-      console.log(err);
-
       setComments((currComments) => {
         return [backup, ...currComments];
       });
