@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getComments } from "../../../../api";
+import { getComments } from "../../api";
 
 import { list, heading } from "./Comments.module.css";
 

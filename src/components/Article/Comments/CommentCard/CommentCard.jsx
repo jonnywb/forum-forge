@@ -1,8 +1,8 @@
 import { item, content, votes, author, body, del } from "./CommentCard.module.css";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { deleteComment } from "../../../../../api";
+import { deleteComment } from "../../../api";
 import { useContext } from "react";
-import { UserContext } from "../../../../Context/UserProvider";
+import { UserContext } from "../../../Context/UserProvider";
 
 const CommentCard = ({ comments, comment, setComments, setCommentCount, setShowComments }) => {
   const { user } = useContext(UserContext);
@@ -26,8 +26,6 @@ const CommentCard = ({ comments, comment, setComments, setCommentCount, setShowC
 
       await deleteComment(comment.comment_id);
     } catch (err) {
-      console.log(err);
-
       setComments((currComments) => {
         return [backup, ...currComments];
       });

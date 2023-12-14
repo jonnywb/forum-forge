@@ -1,10 +1,10 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getArticleById } from "../../../api";
+import { getArticleById } from "../api";
 import CommentCard from "./Comments/CommentCard/CommentCard";
-
 import Comments from "./Comments/Comments";
 import PostComment from "./Comments/PostComment/PostComment";
+import Error from "../Error/Error-lg";
 import Vote from "../Vote/Vote";
 import styles from "./Article.module.css";
 
@@ -14,22 +14,33 @@ const Article = () => {
   const [article, setArticle] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [commentCount, setCommentCount] = useState(0);
+  const [apiError, setApiError] = useState();
 
   useEffect(() => {
     setIsLoading(true);
 
-    getArticleById(article_id).then((newArticle) => {
-      setArticle(newArticle);
-      setCommentCount(+newArticle.comment_count);
-      setIsLoading(false);
-    });
+    getArticleById(article_id)
+      .then((newArticle) => {
+        setArticle(newArticle);
+        setCommentCount(+newArticle.comment_count);
+        setIsLoading(false);
+      })
+      .catch(({ response }) => {
+        const {
+          status,
+          data: { msg },
+        } = response;
+        setApiError({ status, msg });
+      });
   }, [article_id]);
 
   const handleShowComments = () => {
     setShowComments(!showComments);
   };
 
-  if (isLoading) {
+  if (apiError) {
+    return <Error err={apiError} />;
+  } else if (isLoading) {
     return <p className={styles.msg}>Loading...</p>;
   }
 
@@ -39,7 +50,7 @@ const Article = () => {
     const date = new Date(created_at);
 
     return (
-      <>
+      <section className={styles.container}>
         <article className={styles.article}>
           <nav className={styles.articleNav}>
             <Link to="/articles">
@@ -65,11 +76,9 @@ const Article = () => {
           <p className={styles.body}>{body}</p>
 
           <footer className={styles.articleFoot}>
-            <div className={styles.dateTime}>
-              <p>
-                Created on {date.toLocaleDateString()} at {date.toLocaleTimeString()}
-              </p>
-            </div>
+            <p className={styles.dateTime}>
+              Created on {date.toLocaleDateString()} at {date.toLocaleTimeString()}
+            </p>
             <button className={styles.count} onClick={handleShowComments} disabled={commentCount === 0}>
               {(showComments && commentCount > 0 && "Hide ") || (!showComments && commentCount > 0 && "Show ")}
               {commentCount} comments
@@ -100,7 +109,7 @@ const Article = () => {
             </>
           )}
         />
-      </>
+      </section>
     );
   }
 };

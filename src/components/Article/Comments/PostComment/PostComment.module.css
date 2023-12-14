@@ -5,9 +5,10 @@
 
 .label {
   text-align: right;
-  color: #e2e2e2;
+  color: #f1996e;
+  font-size: 0.9em;
   width: 10%;
-  padding: 1em;
+  padding: 1.1em;
 }
 
 .textarea {

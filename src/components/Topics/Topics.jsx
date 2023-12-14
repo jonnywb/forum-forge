@@ -1,17 +1,7 @@
-import { useState, useEffect } from "react";
-import { getTopics } from "../../../api";
 import { topics as list, topic as item, active } from "./Topics.module.css";
 import { Link } from "react-router-dom";
 
-const Topics = ({ currTopic }) => {
-  const [topics, setTopics] = useState([]);
-
-  useEffect(() => {
-    getTopics().then((newTopics) => {
-      setTopics(newTopics);
-    });
-  }, []);
-
+const Topics = ({ topics, currTopic }) => {
   return (
     <nav className={list}>
       {topics.map((topic) => {

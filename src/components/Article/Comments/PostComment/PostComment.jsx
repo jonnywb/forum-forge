@@ -1,12 +1,13 @@
-import { postComment } from "../../../../../api";
+import { postComment } from "../../../api";
 import { useState, useContext } from "react";
 import { commentForm, label, textarea, submit, error } from "./PostComment.module.css";
-import { UserContext } from "../../../../Context/UserProvider";
+import { UserContext } from "../../../Context/UserProvider";
+import Error from "../../../Error/Error-sm";
 
 const PostComment = ({ article_id, setComments, comments, setCommentCount, setShowComments }) => {
   const [input, setInput] = useState("");
   const { user } = useContext(UserContext);
-  const [apiError, setApiError] = useState(false);
+  const [apiError, setApiError] = useState();
 
   const handleChange = (event) => {
     setInput(event.target.value);
@@ -24,14 +25,17 @@ const PostComment = ({ article_id, setComments, comments, setCommentCount, setSh
       });
       setInput("");
     } catch (err) {
-      console.log(err);
-      setApiError(true);
+      if (err.response) {
+        setApiError({ status: err.response.status, msg: err.response.data.msg });
+      } else {
+        setApiError({ status: 500, msg: "Internal Server Error" });
+      }
     }
   };
 
   return (
     <>
-      {apiError && <p className={error}>There was an error contacting the server, please try again later.</p>}
+      {apiError && <Error err={apiError} />}
       <form className={commentForm} onSubmit={handleSubmit}>
         <label className={label} htmlFor="comment">
           Comment
