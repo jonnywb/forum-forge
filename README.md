@@ -24,7 +24,7 @@ If you'd like to run this app on your own computer, follow these instructions:
 
 3. Get the project URL, and use git clone to clone the repo into your directory.
 
-> git clone https://github.com/jonnywb/nc-news-site.git
+> git clone https://github.com/jonnywb/forum-forge.git
 
 4. Open the project with your code editor, Virtual Studio Code is recommended.
 
