@@ -2,8 +2,8 @@
   box-shadow: 0.2em 0.2em 1em rgba(0, 0, 0, 0.1);
   display: grid;
   grid-template-columns: 0.1fr 1fr 1fr 1fr;
-  grid-template-rows: 0.2fr 0.8fr 2.8fr 1.2fr 0.5fr;
-  max-height: 80vh;
+  grid-template-rows: 0.2fr 0.8fr 2.8fr 1.2fr 0.4fr;
+  max-height: 60vh;
 }
 
 .articleNav {
@@ -32,9 +32,8 @@
   grid-area: 2 / 1 / 3 / 5;
   width: 100%;
   display: flex;
-  background-color: #f9f8f8;
+  background-color: #dedede;
   padding: 0.5em 2em;
-  border-bottom: 2px solid grey;
   align-items: center;
 }
 
@@ -70,7 +69,7 @@
 .imgDiv {
   grid-area: 3 / 1 / 4 / 5;
   overflow: hidden;
-  width: 100%;
+  width: 80%;
   height: 100%;
 }
 
@@ -88,8 +87,8 @@
 }
 
 .articleFoot {
-  background-color: #face85;
-  padding: 1em;
+  background-color: #e0e6eb;
+  padding: 0.2em;
   grid-area: 5 / 1 / 6 / 5;
   width: 100%;
   display: flex;
@@ -102,11 +101,11 @@
 }
 
 .count {
-  background-color: #face85;
-  border: 0.4em double #0c243e;
+  background-color: #f1996e;
+  border: none;
   padding: 1em;
   border-radius: 1em;
-  box-shadow: 0em 0.1em 0.5em rgba(0, 0, 0, 0.2);
+  box-shadow: 0em 0.1em 0.2em 0.1em rgba(0, 0, 0, 0.3);
 }
 
 .count:hover {

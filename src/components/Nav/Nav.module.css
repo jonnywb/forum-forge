@@ -1,16 +1,18 @@
-nav {
+.mainNav {
   margin-right: 0;
 }
 
-nav a {
+.mainLink {
   font-size: 1.1em;
   text-decoration: none;
-  color: #f1996e;
   padding-right: 3rem;
   margin-right: 1em;
   transition: 0.7s;
+  color: #f1996e;
+  border-bottom: 0.05em solid #f1996e;
 }
 
-nav a:hover {
-  border-bottom: 0.5em solid #f1996e;
+.mainLink:hover {
+  color: #face98;
+  border-bottom: 0.2em solid #face86;
 }
