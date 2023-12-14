@@ -22,6 +22,9 @@ const List = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const validSortBy = ["votes", "comment_count", "created_at"];
+  const validOrder = ["asc", "desc"];
+
   useEffect(() => {
     getTopics().then((newTopics) => {
       setTopics(newTopics);
@@ -37,12 +40,43 @@ const List = () => {
     setIsLoading(true);
 
     const params = { order, sort_by };
+    const searchParams = new URLSearchParams(location.search);
 
     if (topics.find((t) => t.slug === topic)) {
       params.topic = topic;
     } else if (topic) {
       setApiError({ status: 404, msg: "Topic Not Found" });
     }
+
+    const searchParamsSort = searchParams.get("sort_by");
+    const searchParamsOrder = searchParams.get("order");
+
+    if (sort_by) {
+      searchParams.set("sort_by", sort_by);
+    } else if (searchParamsSort) {
+      if (validSortBy.includes(searchParamsSort)) {
+        params.sort_by = searchParamsSort;
+      } else {
+        setApiError({ status: 400, msg: "Bad Request" });
+      }
+    }
+
+    if (order) {
+      searchParams.set("order", order);
+    } else if (searchParamsOrder) {
+      if (validOrder.includes(searchParamsOrder)) {
+        params.order = searchParamsOrder;
+      } else {
+        setApiError({ status: 400, msg: "Bad Request" });
+      }
+    }
+
+    const stringParams = searchParams.toString();
+
+    navigate({
+      pathname: location.pathname,
+      search: stringParams,
+    });
 
     getArticles(params)
       .then((newArticles) => {
@@ -52,23 +86,6 @@ const List = () => {
       .catch(({ response }) => {
         setApiError({ status: response.status, msg: response.data.msg });
       });
-
-    const searchParams = new URLSearchParams(location.search);
-
-    if (sort_by) {
-      searchParams.set("sort_by", sort_by);
-    }
-
-    if (order) {
-      searchParams.set("order", order);
-    }
-
-    const stringParams = searchParams.toString();
-
-    navigate({
-      pathname: location.pathname,
-      search: stringParams,
-    });
   }, [topic, order, sort_by, topicsLoaded]);
 
   if (apiError) {
