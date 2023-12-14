@@ -16,7 +16,7 @@ The app is built using React.js, and uses axios to fetch data from my previously
 
 If you'd like to run this app on your own computer, follow these instructions:
 
-1. Follow [this link](https://github.com/jonnywb/nc-news-site) to take you to the github repo, if you haven't already.
+1. Follow [this link](https://github.com/jonnywb/forum-forge.git) to take you to the github repo, if you haven't already.
 
 2. Change directory to the folder you want to store this project:
 
