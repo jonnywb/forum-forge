@@ -13,8 +13,8 @@ body {
 
 header {
   margin: 0 auto;
-  margin-top: 1em;
   max-width: 1600px;
+  margin-top: 0.5em;
   display: flex;
   padding: 0.5em;
   width: 95%;
