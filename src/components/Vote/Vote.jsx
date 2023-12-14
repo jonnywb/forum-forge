@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { voteArticle } from "../../../api";
+import { voteArticle } from "../api";
 import styles from "./Vote.module.css";
 
 const Vote = ({ article_id, setArticle, setArticles, votes }) => {

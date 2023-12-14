@@ -15,8 +15,12 @@
   height: 100%;
 }
 
-.votes p:first-child {
+.votes p {
   color: #f1996e;
+}
+
+.votes p:nth-child(2) {
+  color: #dedede;
 }
 
 .content {
@@ -34,7 +38,7 @@
   height: 1.5em;
   font-size: 1em;
   font-weight: 500;
-  width: 15%;
+  width: 25vw;
   margin-left: 0;
   padding-left: 4em;
   background-color: #f1996e;
@@ -57,9 +61,23 @@
 }
 
 .del {
+  margin-right: 1em;
+  color: #dedede;
   cursor: pointer;
 }
 
 .del:hover {
   fill: #f1996e;
+}
+
+@media screen and (max-width: 800px) {
+  .author {
+    width: 40vw;
+  }
+}
+
+@media screen and (max-width: 410px) {
+  .author {
+    width: 60vw;
+  }
 }

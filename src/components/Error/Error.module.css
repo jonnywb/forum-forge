@@ -1,0 +1,39 @@
+/* Large */
+
+.container {
+  color: #0c243e;
+  background-color: #dedede;
+  text-align: center;
+  width: 45vw;
+  max-width: 500px;
+  margin-top: 5vh;
+  padding: 2em;
+}
+
+.statusCode {
+  font-size: 10em;
+  font-weight: 800;
+  color: #0c243e;
+}
+
+@media screen and (max-width: 800px) {
+  .statusCode {
+    font-size: 6em;
+  }
+}
+
+/* Small */
+
+.smallContainer {
+  color: #0c243e;
+  background-color: #dedede;
+  text-align: center;
+  width: 100%;
+  padding: 0.5em;
+}
+
+.smallStatus {
+  font-size: 2em;
+  font-weight: 800;
+  color: #0c243e;
+}

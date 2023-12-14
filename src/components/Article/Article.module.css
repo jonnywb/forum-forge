@@ -1,9 +1,14 @@
+.container {
+  background-color: #dedede;
+}
+
 .article {
   box-shadow: 0.2em 0.2em 1em rgba(0, 0, 0, 0.1);
   display: grid;
   grid-template-columns: 0.1fr 1fr 1fr 1fr;
-  grid-template-rows: 0.2fr 0.8fr 2.8fr 1.2fr 0.4fr;
+  grid-template-rows: 0.2fr 0.7fr 3fr 1.2fr 0.3fr;
   max-height: 60vh;
+  color: #0c243e;
 }
 
 .articleNav {
@@ -87,17 +92,29 @@
 }
 
 .articleFoot {
-  background-color: #e0e6eb;
-  padding: 0.2em;
   grid-area: 5 / 1 / 6 / 5;
+  background-color: #08182b;
+  padding: 0.5em;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid black;
+}
+
+.dateTime {
+  color: #f1996e;
 }
 
 .msg {
+  font-size: 1.5em;
+  color: #0c243e;
+  background-color: #dedede;
   text-align: center;
+  width: 45vw;
+  max-width: 500px;
+  margin-top: 5vh;
+  padding: 2em;
 }
 
 .count {
