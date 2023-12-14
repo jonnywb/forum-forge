@@ -12,19 +12,19 @@ import { useParams } from "react-router-dom";
 const List = () => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [sort, setSort] = useState();
+  const [sort_by, setSort_by] = useState();
   const [order, setOrder] = useState();
   const { topic } = useParams();
 
   useEffect(() => {
-    const params = { topic };
+    const params = { topic, order, sort_by };
     setIsLoading(true);
 
     getArticles(params).then((newArticles) => {
       setArticles(newArticles);
       setIsLoading(false);
     });
-  }, [topic]);
+  }, [topic, order, sort_by]);
 
   if (isLoading) <p>Loading...</p>;
 
@@ -34,7 +34,7 @@ const List = () => {
         <h2>Articles</h2>
       </div>
       <Topics currTopic={topic} />
-      <Filters setSort={setSort} setOrder={setOrder} />
+      <Filters setSort_by={setSort_by} setOrder={setOrder} />
       <ul className={list.list}>
         <p>Click the image to view article</p>
         {articles.map((article) => {

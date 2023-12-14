@@ -1,6 +1,9 @@
 .filters {
-  padding: 0.5rem;
-  background: #0c243e;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5em;
+  background: #08182b;
+  padding: 0.5em;
 }
 
 .filters button {
