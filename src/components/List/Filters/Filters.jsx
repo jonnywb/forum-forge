@@ -1,4 +1,5 @@
 import { filters } from "./Filters.module.css";
+import { Link } from "react-router-dom";
 
 const Filters = ({ setSort_by, setOrder }) => {
   const sortByOptions = {
@@ -21,7 +22,7 @@ const Filters = ({ setSort_by, setOrder }) => {
 
   return (
     <div className={filters}>
-      <button>Create Article</button>
+      <Link to={"/articles/create"}>Create Article</Link>
 
       <label>
         Sort by
@@ -37,8 +38,8 @@ const Filters = ({ setSort_by, setOrder }) => {
       <label>
         Order
         <select onChange={handleOrder}>
-          <option value="asc">Ascending</option>
           <option value="desc">Descending</option>
+          <option value="asc">Ascending</option>
         </select>
       </label>
     </div>

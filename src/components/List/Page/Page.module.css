@@ -1,0 +1,28 @@
+.nums {
+  background-color: #0c233e;
+  width: 100%;
+  text-align: center;
+  padding: 1em;
+}
+
+.num {
+  font-size: 1em;
+  padding: 0.75em 1.5em;
+  color: #ff8c6b;
+  border-left: 0.1em solid #0c233e;
+  cursor: pointer;
+}
+
+.num:hover {
+  background-color: #face86;
+}
+
+.num:first-child {
+  border-left: none;
+}
+
+.pageNumActive {
+  composes: num;
+  color: #0c233e;
+  background-color: #ff8c6b;
+}

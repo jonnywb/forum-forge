@@ -1,0 +1,43 @@
+.postArticle {
+  text-align: center;
+  background-color: #dedede;
+  color: #0c243e;
+  width: 80%;
+  max-width: 700px;
+  margin-top: 5vh;
+  box-shadow: 0.4em 1em 4em 0.1em rgba(0, 0, 0, 0.5);
+}
+
+.header {
+  background: #f1996e;
+  background: -webkit-linear-gradient(135deg, #0c243e 0%, #a86288 15%, #ff8c6b 50%, #a86288 88%, #0c243e 100%);
+  padding: 0.5em;
+  text-align: center;
+}
+
+.postArticle form {
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.postArticle label {
+  font-weight: 600;
+  width: 100%;
+}
+
+.postArticle input,
+.postArticle select,
+.postArticle textarea {
+  margin-left: 1em;
+  float: right;
+  width: 80%;
+  margin-bottom: 2em;
+  font-size: 1em;
+  height: 3em;
+}
+
+.postArticle button {
+  padding: 1em 2em;
+}

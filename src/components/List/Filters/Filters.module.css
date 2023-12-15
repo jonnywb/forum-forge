@@ -1,0 +1,26 @@
+.filters {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5em;
+  background: #08182b;
+  padding: 0.5em;
+}
+
+.filters a {
+  color: #ff8c6b;
+  text-decoration: none;
+}
+
+.filters a:hover {
+  transition: 0.6s;
+  text-decoration: underline;
+}
+
+.filters label {
+  color: #ff8c6b;
+  margin-left: 1em;
+}
+
+.filters select {
+  margin-left: 0.5em;
+}

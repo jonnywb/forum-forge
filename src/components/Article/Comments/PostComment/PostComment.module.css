@@ -43,3 +43,14 @@
   text-shadow: 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.6);
   color: white;
 }
+
+@media screen and (max-width: 1000px) {
+  .submit {
+    padding: 1em;
+    width: 20%;
+  }
+
+  .label {
+    width: 20%;
+  }
+}

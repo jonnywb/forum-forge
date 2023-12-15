@@ -7,7 +7,7 @@ const newsApi = axios.create({
 export async function getArticles(params) {
   const { data } = await newsApi.get("/articles", { params });
 
-  return data.articles;
+  return data;
 }
 
 export async function getArticleById(article_id) {
