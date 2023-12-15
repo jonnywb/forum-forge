@@ -6,7 +6,7 @@
   box-shadow: 0.2em 0.2em 1em rgba(0, 0, 0, 0.1);
   display: grid;
   grid-template-columns: 0.1fr 1fr 1fr 1fr;
-  grid-template-rows: 0.2fr 0.7fr 3fr 1.2fr 0.3fr;
+  grid-template-rows: 0.2fr 0.7fr minmax(200px, auto) minmax(200px, auto) 0.3fr;
   max-height: 60vh;
   color: #0c243e;
 }
@@ -75,7 +75,6 @@
   grid-area: 3 / 1 / 4 / 5;
   overflow: hidden;
   width: 80%;
-  height: 100%;
 }
 
 .imgDiv img {
@@ -88,7 +87,6 @@
 .body {
   grid-area: 4 / 1 / 5 / 5;
   padding: 2rem;
-  height: fit-content;
 }
 
 .articleFoot {
