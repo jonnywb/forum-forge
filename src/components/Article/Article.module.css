@@ -106,17 +106,6 @@
   color: #f1996e;
 }
 
-.msg {
-  font-size: 1.5em;
-  color: #0c243e;
-  background-color: #dedede;
-  text-align: center;
-  width: 45vw;
-  max-width: 500px;
-  margin-top: 5vh;
-  padding: 2em;
-}
-
 .count {
   background-color: #f1996e;
   border: none;
@@ -138,4 +127,9 @@
 
 .count:disabled:hover {
   color: #0c243e;
+}
+
+.loading {
+  width: 100%;
+  text-align: center;
 }

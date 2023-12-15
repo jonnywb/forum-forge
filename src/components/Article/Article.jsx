@@ -1,4 +1,4 @@
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getArticleById } from "../api";
 import CommentCard from "./Comments/CommentCard/CommentCard";
@@ -6,6 +6,7 @@ import Comments from "./Comments/Comments";
 import PostComment from "./Comments/PostComment/PostComment";
 import Error from "../Error/Error-lg";
 import Vote from "../Vote/Vote";
+import { RotatingLines } from "react-loader-spinner";
 import styles from "./Article.module.css";
 
 const Article = () => {
@@ -41,7 +42,11 @@ const Article = () => {
   if (apiError) {
     return <Error err={apiError} />;
   } else if (isLoading) {
-    return <p className={styles.msg}>Loading...</p>;
+    return (
+      <div className={styles.loading}>
+        <RotatingLines strokeColor="#0c243e" strokeWidth="1" animationDuration="0.75" width="100" />
+      </div>
+    );
   }
 
   if (article) {

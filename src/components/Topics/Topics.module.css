@@ -6,7 +6,7 @@
 }
 
 .topic {
-  padding: 0 1em;
+  padding: 0.5em 1em;
   margin: 0;
   width: 100%;
   text-align: center;
@@ -40,4 +40,11 @@
 
 .active:hover {
   border: none;
+}
+
+@media screen and (max-width: 800px) {
+  .topic {
+    font-size: 1.2em;
+    padding: 0.5em 1em;
+  }
 }

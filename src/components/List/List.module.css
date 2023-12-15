@@ -1,4 +1,4 @@
-.articles {
+.articlesCss {
   background-color: #dedede;
 }
 
@@ -27,4 +27,9 @@
   color: #0c243e;
   text-align: center;
   padding: 2em;
+}
+
+.loading {
+  width: 100%;
+  text-align: center;
 }
