@@ -12,7 +12,7 @@
 }
 
 .articleNav {
-  background-color: #f1996e;
+  background-color: #ff8c6b;
   grid-area: 1 / 1 / 2 / 5;
   width: 100%;
   text-align: left;
@@ -26,7 +26,7 @@
 
 .articleNav a:hover {
   background-color: #0c233e;
-  color: #f1996e;
+  color: #ff8c6b;
 }
 
 .articleNav span {
@@ -101,11 +101,11 @@
 }
 
 .dateTime {
-  color: #f1996e;
+  color: #ff8c6b;
 }
 
 .count {
-  background-color: #f1996e;
+  background-color: #ff8c6b;
   border: none;
   padding: 1em;
   border-radius: 1em;

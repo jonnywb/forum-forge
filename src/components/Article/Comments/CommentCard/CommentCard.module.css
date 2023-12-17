@@ -16,7 +16,7 @@
 }
 
 .votes p {
-  color: #f1996e;
+  color: #ff8c6b;
 }
 
 .votes p:nth-child(2) {
@@ -41,7 +41,7 @@
   width: 25vw;
   margin-left: 0;
   padding-left: 4em;
-  background-color: #f1996e;
+  background-color: #ff8c6b;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -67,7 +67,7 @@
 }
 
 .del:hover {
-  fill: #f1996e;
+  fill: #ff8c6b;
 }
 
 @media screen and (max-width: 800px) {

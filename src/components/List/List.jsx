@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
+
 import { RotatingLines } from "react-loader-spinner";
+import { Pagination } from "@mui/material";
 
 import { getArticles, getTopics } from "../api";
 
 import Filters from "./Filters/Filters";
-import Page from "./Page/Page";
 import Card from "./Card/Card";
 import Vote from "../Vote/Vote";
 import Topics from "../Topics/Topics";
@@ -23,7 +24,7 @@ const List = () => {
   const [apiError, setApiError] = useState();
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
-  const [pageNums, setPageNums] = useState([1]);
+  const [pageCount, setPageCount] = useState(1);
 
   const { topic } = useParams();
 
@@ -42,7 +43,35 @@ const List = () => {
 
   useEffect(() => {
     if (topicsLoaded) {
-      const params = { order, sort_by, p: page, limit };
+      let params = {
+        topic,
+        p: 1,
+        limit: 10,
+        sort_by: "created_at",
+        order: "desc",
+      };
+
+      getArticles(params)
+        .then(({ articles, total_count }) => {
+          setArticles(articles);
+
+          setPageCount(Math.ceil(total_count / limit));
+
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          if (err.response) {
+            setApiError({ status: response.status, msg: response.data.msg });
+          } else {
+            setApiError({ status: 500, msg: "Internal Server Error" });
+          }
+        });
+    }
+  }, [topic]);
+
+  useEffect(() => {
+    if (topicsLoaded) {
+      let params = { order, sort_by, p: page, limit };
       const searchParams = new URLSearchParams(search);
 
       if (topics.find((t) => t.slug === topic)) {
@@ -99,20 +128,19 @@ const List = () => {
         .then(({ articles, total_count }) => {
           setArticles(articles);
 
-          setPageNums([1]);
-          for (let i = 2; i <= Math.ceil(total_count / limit); i++) {
-            setPageNums((currPageNums) => {
-              return [...currPageNums, i];
-            });
-          }
+          setPageCount(Math.ceil(total_count / limit));
 
           setIsLoading(false);
         })
-        .catch(({ response }) => {
-          setApiError({ status: response.status, msg: response.data.msg });
+        .catch((err) => {
+          if (err.response) {
+            setApiError({ status: response.status, msg: response.data.msg });
+          } else {
+            setApiError({ status: 500, msg: "Internal Server Error" });
+          }
         });
     }
-  }, [topic, order, sort_by, limit, page, topicsLoaded]);
+  }, [order, sort_by, limit, page, topicsLoaded]);
 
   if (apiError) {
     return <Error err={apiError} />;
@@ -148,7 +176,14 @@ const List = () => {
           </div>
         )}
 
-        <Page pageNums={pageNums} setPage={setPage} page={page} />
+        <Pagination
+          sx={{ width: 1 / 2 }}
+          count={pageCount}
+          page={page}
+          onChange={(event, value) => {
+            setPage(value);
+          }}
+        />
       </section>
     );
   }
